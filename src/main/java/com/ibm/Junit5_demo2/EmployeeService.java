@@ -19,44 +19,40 @@ public class EmployeeService {
 		return employees;
 	}		
 
-	public Employee findEmployee(int id) {
+	public Employee findEmployee(int id)
+	{
+		for(Employee e:employees)
+		{
+			if(e.getId()==id)
+			{
+				return e;
+			}
+		}
+		return null;
+	}
 
-		for(Employee e : employees) {
+	public boolean deleteEmployee(int id) {
+		return employees.removeIf(e->e.getId()==id);
+		}
 
-            if(e.getId()==id)
-                return e;
-        }
+	public List<Employee> sortBySalary()
+	{
+		return employees.stream()
+				.sorted(Comparator.comparing(Employee::getSalary))
+				.collect(Collectors.toList());
+	}
 
-        return null;
-    }
+	public double getHighestSalary() 
+	{
+		return employees.stream()
+				.mapToDouble(Employee::getSalary)
+				.max()
+				.orElse(0);
+		}
 
-    public boolean deleteEmployee(int id) {
-
-        return employees.removeIf(e->e.getId()==id);
-    }
-
-    public List<Employee> sortBySalary() {
-
-        return employees.stream()
-
-                .sorted(Comparator.comparing(Employee::getSalary))
-
-                .collect(Collectors.toList());
-    }
-
-    public double getHighestSalary() {
-
-        return employees.stream()
-
-                .mapToDouble(Employee::getSalary)
-
-                .max()
-
-                .orElse(0);
-    }
-
-    public int getTotalEmployees() {
-        return employees.size();
-    }
+	public int getTotalEmployees() 
+	{
+		return employees.size();
+	}
 
 }
