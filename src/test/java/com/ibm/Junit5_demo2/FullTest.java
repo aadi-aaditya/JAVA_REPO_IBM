@@ -25,9 +25,9 @@ public class FullTest
 	{
 		ES = new EmployeeService();
 		
-		emp1 = new Employee(101, "Alice", 50000.0);
-        emp2 = new Employee(102, "Bob", 75000.0);
-        emp3 = new Employee(103, "Charlie", 60000.0);
+		emp1 = new Employee(101, "Alice", 50000);
+        emp2 = new Employee(102, "Bob", 75000);
+        emp3 = new Employee(103, "Charlie", 60000);
 		
 		ES.addEmployee(emp1);
 		ES.addEmployee(emp2);
